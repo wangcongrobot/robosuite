@@ -72,7 +72,7 @@
             <site name="torso" size=".01" rgba="0 0 0 0" class="site"/>
             <geom type="mesh" class="viz" mesh="RexROV2_no_props" name="rov_body"/>
             <!-- <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="RexROV2_no_props" /> -->
-            <geom size="1.28 0.75 0.05" pos="0 0 -0.75" type="box" />
+            <geom size="1.28 0.75 0.05" pos="0 0 -0.75" rgba="1 0 0 1" type="box" />
             <geom size="1.28 0.75 0.2" pos="0 0 0.6" type="box" />
             <geom size="1.1 0.05 0.55" pos="-0.2 0.7 -0.15" type="box" />
             <geom size="1.1 0.05 0.55" pos="-0.2 -0.7 -0.15" type="box" />
