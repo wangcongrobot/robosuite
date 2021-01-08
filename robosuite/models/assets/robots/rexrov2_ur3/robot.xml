@@ -45,7 +45,7 @@
         <geom contype="0" conaffinity="0" group="1" />
       </default>
       <default class="coll">
-        <geom contype="1" conaffinity="1" group="1" />
+        <geom contype="1" conaffinity="1" group="0" />
       </default>
       <default class="site">
         <geom group="2"/>
@@ -54,7 +54,7 @@
 
     <worldbody>
         <!-- add robot here -->
-        <body name="base" pos=".0 0 -1.0">
+        <body name="base" pos=".0 0 0">
             <!-- <joint type="free" name="root" damping="2000"/> -->
             <!-- <site name="base_offset" pos="0.35 0 0" size="0.02" rgba="0 1 0 1" type="sphere" class="site"/> -->
 
@@ -70,58 +70,61 @@
             <joint name="wrist_x_hinge_joint" damping="5000" type="hinge" pos="0 0 0" axis="1 0 0" limited="true" range="-1. 1." />
             <!-- sensor site -->
             <site name="torso" size=".01" rgba="0 0 0 0" class="site"/>
-            <geom type="mesh" class="viz" mesh="RexROV2_no_props" name="rov_body"/>
-            <!-- <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="RexROV2_no_props" /> -->
-            <geom size="1.28 0.75 0.05" pos="0 0 -0.75" rgba="1 0 0 1" type="box" />
-            <geom size="1.28 0.75 0.2" pos="0 0 0.6" type="box" />
-            <geom size="1.1 0.05 0.55" pos="-0.2 0.7 -0.15" type="box" />
-            <geom size="1.1 0.05 0.55" pos="-0.2 -0.7 -0.15" type="box" />
-            <!-- ur3 base -->
-            <geom pos="1.28 0 -0.73" quat="0.707107 0 0 0.707107" type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="base" />
-            <geom pos="1.28 0 -0.73" quat="0.707107 0 0 0.707107" type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="base" name="arm_base"/>
+            <body name="rov_body">
+                <geom type="mesh" class="viz" mesh="RexROV2_no_props" name="rov_body"/>
+                <!-- <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="RexROV2_no_props" /> -->
+                <geom size="1.28 0.75 0.02" pos="0 0 -0.75" rgba="1 0 0 1" type="box" />
+                <geom size="1.28 0.75 0.2" pos="0 0 0.6" type="box" />
+                <geom size="1.1 0.05 0.55" pos="-0.2 0.7 -0.15" type="box" />
+                <geom size="1.1 0.05 0.55" pos="-0.2 -0.7 -0.15" type="box" />
+                <!-- ur3 base -->
+                <geom pos="1.28 0 -0.73" quat="0.707107 0 0 0.707107" type="mesh" class="viz" rgba="0. 0. 0.7 1" mesh="base" />
+                <!-- <geom pos="1.28 0 -0.73" quat="0.707107 0 0 0.707107" type="mesh" class="coll" rgba="0. 0. 0.7 1" mesh="base" name="arm_base"/>   -->
+            </body>
+
             <body name="rexrov2/dvl_link" pos="0.294307 0.468494 -0.68" quat="0.707107 0 0.707107 0">
                 <inertial pos="0 0 0" mass="0.001" diaginertia="1.7e-08 1.7e-08 1.7e-08" />
                 <!-- <joint name="rexrov2/dvl_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="dvl" />
-                <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 <body name="rexrov2/dvl_sonar0_link" pos="0 0 0" quat="0.96639 0 -0.257081 0">
                     <inertial pos="0 0 0" mass="0.001" diaginertia="1.7e-08 1.7e-08 1.7e-08" />
                     <!-- <joint name="rexrov2/dvl_sonar0_joint" pos="0 0 0" axis="1 0 0" /> -->
-                    <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                    <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 </body>
                 <body name="rexrov2/dvl_sonar1_link" pos="0 0 0" quat="0.96639 0 0 0.257081">
                     <inertial pos="0 0 0" mass="0.001" diaginertia="1.7e-08 1.7e-08 1.7e-08" />
                     <!-- <joint name="rexrov2/dvl_sonar1_joint" pos="0 0 0" axis="1 0 0" /> -->
-                    <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                    <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 </body>
                 <body name="rexrov2/dvl_sonar2_link" pos="0 0 0" quat="0.96639 0 0.257081 0">
                     <inertial pos="0 0 0" mass="0.001" diaginertia="1.7e-08 1.7e-08 1.7e-08" />
                     <!-- <joint name="rexrov2/dvl_sonar2_joint" pos="0 0 0" axis="1 0 0" /> -->
-                    <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                    <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 </body>
                 <body name="rexrov2/dvl_sonar3_link" pos="0 0 0" quat="0.96639 0 0 -0.257081">
                     <inertial pos="0 0 0" mass="0.001" diaginertia="1.7e-08 1.7e-08 1.7e-08" />
                     <!-- <joint name="rexrov2/dvl_sonar3_joint" pos="0 0 0" axis="1 0 0" /> -->
-                    <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                    <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 </body>
             </body>
             <body name="rexrov2/magnetometer_link" pos="0 0 0">
                 <inertial pos="0 0 0" mass="0.015" diaginertia="1e-05 1e-05 1e-05" />
                 <!-- <joint name="rexrov2/magnetometer_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom size="0.05 0.05 0.05" type="box" class="viz"/>
-                <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
             </body>
             <body name="rexrov2/rpt_link" pos="-1.32 0 0.8">
                 <inertial pos="0 0 0" mass="0.001" diaginertia="1.7e-08 1.7e-08 1.7e-08" />
                 <!-- <joint name="rexrov2/rpt_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="rpt" />
-                <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
             </body>
             <body name="rexrov2/pressure_link" pos="-1.32 0.5 0.85">
                 <inertial pos="0 0 0" mass="0.015" diaginertia="1e-05 1e-05 1e-05" />
                 <!-- <joint name="rexrov2/pressure_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="pressure" />
-                <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
             </body>
             <body name="rexrov2/imu_link" pos="0 0 0">
                 <inertial pos="0 0 0" mass="0.015" diaginertia="1e-05 1e-05 1e-05" />
@@ -131,33 +134,33 @@
                 <inertial pos="0 0 0" mass="0.1" diaginertia="1e-05 1e-05 1e-05" />
                 <!-- <joint name="rexrov2/camera_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="oe14-372" />
-                <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 <body name="rexrov2/camera_link_optical" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5">
                     <inertial pos="0 0 0" mass="0.001" diaginertia="1.66667e-12 1.66667e-12 1.66667e-12" />
                     <!-- <joint name="rexrov2/camera_optical_joint" pos="0 0 0" axis="1 0 0" /> -->
-                    <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                    <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 </body>
             </body>
             <body name="rexrov2/cameraright_link" pos="1.15 -0.63 0.4" quat="0.936293 -0.0587108 0.289629 0.189796">
                 <inertial pos="0 0 0" mass="0.1" diaginertia="1e-05 1e-05 1e-05" />
                 <!-- <joint name="rexrov2/cameraright_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="oe14-372" />
-                <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 <body name="rexrov2/cameraright_link_optical" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5">
                     <inertial pos="0 0 0" mass="0.001" diaginertia="1.66667e-12 1.66667e-12 1.66667e-12" />
                     <!-- <joint name="rexrov2/cameraright_optical_joint" pos="0 0 0" axis="1 0 0" /> -->
-                    <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                    <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 </body>
             </body>
             <body name="rexrov2/cameraleft_link" pos="1.15 0.63 0.4" quat="0.936293 0.0587108 0.289629 -0.189796">
                 <inertial pos="0 0 0" mass="0.1" diaginertia="1e-05 1e-05 1e-05" />
                 <!-- <joint name="rexrov2/cameraleft_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="oe14-372" />
-                <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 <body name="rexrov2/cameraleft_link_optical" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5">
                     <inertial pos="0 0 0" mass="0.001" diaginertia="1.66667e-12 1.66667e-12 1.66667e-12" />
                     <!-- <joint name="rexrov2/cameraleft_optical_joint" pos="0 0 0" axis="1 0 0" /> -->
-                    <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" />
+                    <!-- <geom size="1e-06 5e-07" quat="0.707107 0 0.707107 0" type="cylinder" /> -->
                 </body>
             </body>
             <body name="rexrov2/gps_link" pos="0 0 0">
@@ -176,72 +179,69 @@
                 <inertial pos="0 0 0" mass="0.001" diaginertia="0.00333333 0.00333333 0.00333333" />
                 <!-- <joint name="rexrov2/thruster_0_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="Propeller" />
-                <geom size="1e-06 5e-07" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" type="cylinder" /> -->
             </body>
             <body name="rexrov2/thruster_1" pos="-0.8217 0 0.589" quat="0.793353 0 -0.608761 0">
                 <inertial pos="0 0 0" mass="0.001" diaginertia="0.00333333 0.00333333 0.00333333" />
                 <!-- <joint name="rexrov2/thruster_1_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="Propeller" />
-                <geom size="1e-06 5e-07" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" type="cylinder" /> -->
             </body>
             <body name="rexrov2/thruster_2" pos="0.8654 -0.5322 0.5332" quat="0.587938 0.392847 -0.392847 0.587938">
                 <inertial pos="0 0 0" mass="0.001" diaginertia="0.00333333 0.00333333 0.00333333" />
                 <!-- <joint name="rexrov2/thruster_2_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="Propeller" />
-                <geom size="1e-06 5e-07" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" type="cylinder" /> -->
             </body>
             <body name="rexrov2/thruster_3" pos="0.8654 0.5322 0.5332" quat="0.587938 -0.392847 0.392847 0.587938">
                 <inertial pos="0 0 0" mass="0.001" diaginertia="0.00333333 0.00333333 0.00333333" />
                 <!-- <joint name="rexrov2/thruster_3_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="Propeller" />
-                <geom size="1e-06 5e-07" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" type="cylinder" /> -->
             </body>
             <body name="rexrov2/thruster_4" pos="-0.7076 0.5129 0.2404" quat="0.976296 0 0 0.21644">
                 <inertial pos="0 0 0" mass="0.001" diaginertia="0.00333333 0.00333333 0.00333333" />
                 <!-- <joint name="rexrov2/thruster_4_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="Propeller" />
-                <geom size="1e-06 5e-07" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" type="cylinder" /> -->
             </body>
             <body name="rexrov2/thruster_5" pos="-0.7076 -0.5129 0.2404" quat="0.976296 0 0 -0.21644">
                 <inertial pos="0 0 0" mass="0.001" diaginertia="0.00333333 0.00333333 0.00333333" />
                 <!-- <joint name="rexrov2/thruster_5_joint" pos="0 0 0" axis="1 0 0" /> -->
                 <geom type="mesh" class="viz" mesh="Propeller" />
-                <geom size="1e-06 5e-07" type="cylinder" />
+                <!-- <geom size="1e-06 5e-07" type="cylinder" /> -->
             </body>
             <!-- add arm here -->
-            <!-- ur3 base -->
-            <!-- <geom pos="1.28 0 -0.73" quat="0.707107 0 0 0.707107" type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="base" />
-            <geom pos="1.28 0 -0.73" quat="0.707107 0 0 0.707107" type="mesh" rgba="0.7 0.7 0.7 1" mesh="base" /> -->
             <body name="shoulder_link" pos="1.28 0 -0.5781" quat="0.707107 0 0 -0.707107">
                 <inertial pos="0 0 0" mass="2" diaginertia="0.00809316 0.00809316 0.005625" />
-                <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
-                <geom type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="shoulder" />
-                <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="shoulder" name="shoulder"/>
+                <joint name="shoulder_pan_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="10" frictionloss="0.01" />
+                <geom type="mesh" class="viz" rgba="0. 0.7 0.7 1" mesh="shoulder" />
+                <geom type="mesh" class="coll" rgba="0. 0.7 0.7 1" mesh="shoulder" name="shoulder"/>
                 <!-- <geom pos="0 0 -0.1519" type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="base" /> -->
                 <!-- <geom pos="0 0 -0.1519" type="mesh" rgba="0.7 0.7 0.7 1" mesh="base" />         -->
                 <body name="upper_arm_link" pos="0 0.1198 0" quat="0.707107 0 0.707107 0">
                     <inertial pos="0 0 0.121825" mass="3.42" diaginertia="0.0217285 0.0217285 0.00961875" />
-                    <joint name="shoulder_lift_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" />
+                    <joint name="shoulder_lift_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="10" frictionloss="0.01" />
                     <geom type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="upperarm" />
                     <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="upperarm" name="upperarm"/>
                     <body name="forearm_link" pos="0 -0.0925 0.24365">
                         <inertial pos="0 0 0.106625" mass="1.26" diaginertia="0.00654681 0.00654681 0.00354375" />
-                        <joint name="elbow_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" />
+                        <joint name="elbow_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-3.14159 3.14159" damping="10" frictionloss="0.01"/>
                         <geom type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="forearm" />
                         <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="forearm" />
                         <body name="wrist_1_link" pos="0 0 0.21325" quat="0.707107 0 0.707107 0">
                             <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.8" diaginertia="0.00225 0.002085 0.002085" />
-                            <joint name="wrist_1_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" />
+                            <joint name="wrist_1_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="10" frictionloss="0.01"/>
                             <geom type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="wrist1" />
                             <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="wrist1" name="wrist1"/>
                             <body name="wrist_2_link" pos="0 0.08505 0">
                                 <inertial pos="0 0 0" quat="0.5 0.5 -0.5 0.5" mass="0.8" diaginertia="0.00225 0.002085 0.002085" />
-                                <joint name="wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" />
+                                <joint name="wrist_2_joint" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28319 6.28319" damping="10" frictionloss="0.01"/>
                                 <geom type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="wrist2" />
                                 <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="wrist2" name="wrist2"/>
                                 <body name="wrist_3_link" pos="0 0 0.08535">
                                     <inertial pos="0 0.000233333 0" quat="0.5 0.5 -0.5 0.5" mass="0.351" diaginertia="1.00099 1.00092 1.00091" />
-                                    <joint name="wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" />
+                                    <joint name="wrist_3_joint" pos="0 0 0" axis="0 1 0" limited="true" range="-6.28319 6.28319" damping="10" frictionloss="0.01"/>
                                     <geom type="mesh" class="viz" rgba="0.7 0.7 0.7 1" mesh="wrist3" />
                                     <geom type="mesh" class="coll" rgba="0.7 0.7 0.7 1" mesh="wrist3" name="wrist3"/>
                                     <geom size="0.005 0.005 0.005" pos="0 0.0819 0" quat="0.707107 -0.707107 0 0" type="box" class="viz" rgba="0. 1. 0. 1"/>
@@ -270,6 +270,17 @@
             </body>
         </body>
     </worldbody>
+
+  <contact>
+    <!-- <exclude body1="rov_body" body2="arm_base" /> -->
+    <exclude body1="rov_body" body2="shoulder_link" />
+    <exclude body1="shoulder_link" body2="upper_arm_link" />
+    <exclude body1="upper_arm_link" body2="forearm_link" />
+    <exclude body1="forearm_link" body2="wrist_1_link" />
+    <exclude body1="wrist_1_link" body2="wrist_2_link" />
+    <exclude body1="wrist_2_link" body2="wrist_3_link" />
+    <exclude body1="wrist_3_link" body2="right_hand" />
+  </contact>
 
     <sensor>
         <!-- IMU -->
