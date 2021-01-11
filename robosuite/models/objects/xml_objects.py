@@ -246,3 +246,67 @@ class DoorObject(MujocoXMLObject):
             "handle": self.naming_prefix + "handle"
         })
         return dic
+
+
+class ValveObject(MujocoXMLObject):
+    """
+    Underwater Valve (adapt from DoorObject)
+
+    Args:
+        friction (3-tuple of float): friction parameters to override the ones specified in the XML
+        damping (float): damping parameter to override the ones specified in the XML
+        lock (bool): Whether to use the locked valve variation object or not
+    """
+    def __init__(self, name, friction=None, damping=None):
+        xml_path = "objects/valve.xml"
+        super().__init__(xml_path_completion(xml_path),
+                         name=name, joints=None, obj_type="all", duplicate_collision_geoms=True)
+
+        # Set relevant body names
+        self.valve_body = self.naming_prefix + "valve"
+        self.frame_body = self.naming_prefix + "frame"
+        self.latch_body = self.naming_prefix + "latch"
+        self.hinge_joint = self.naming_prefix + "hinge"
+        self.latch_joint = self.naming_prefix + "latch"
+
+        self.friction = friction
+        self.damping = damping
+        if self.friction is not None:
+            self._set_valve_friction(self.friction)
+        if self.damping is not None:
+            self._set_valve_damping(self.damping)
+
+    def _set_valve_friction(self, friction):
+        """
+        Helper function to override the valve friction directly in the XML
+
+        Args:
+            friction (3-tuple of float): friction parameters to override the ones specified in the XML
+        """
+        latch = find_elements(root=self.worldbody, tags="joint", attribs={"name": self.latch_joint}, return_first=True)
+        latch.set("frictionloss", array_to_string(np.array([friction])))
+
+    def _set_valve_damping(self, damping):
+        """
+        Helper function to override the valve friction directly in the XML
+
+        Args:
+            damping (float): damping parameter to override the ones specified in the XML
+        """
+        latch = find_elements(root=self.worldbody, tags="joint", attribs={"name": self.latch_joint}, return_first=True)
+        latch.set("damping", array_to_string(np.array([damping])))
+
+    @property
+    def important_sites(self):
+        """
+        Returns:
+            dict: In addition to any default sites for this object, also provides the following entries
+
+                :`'handle'`: Name of valve handle location site
+        """
+        # Get dict from super call and add to it
+        dic = super().important_sites
+        dic.update({
+            "handle": self.naming_prefix + "handle"
+        })
+        return dic
