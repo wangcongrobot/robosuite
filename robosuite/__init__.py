@@ -12,6 +12,7 @@ from robosuite.environments.manipulation.two_arm_peg_in_hole import TwoArmPegInH
 from robosuite.environments.manipulation.two_arm_handover import TwoArmHandover
 
 from robosuite.environments.manipulation.underwater_valve import UnderwaterValve
+from robosuite.environments.underwater_valve_vae import UnderwaterValveVAE
 
 from robosuite.environments import ALL_ENVIRONMENTS
 from robosuite.controllers import ALL_CONTROLLERS, load_controller_config

@@ -267,6 +267,8 @@ class MujocoModel(object):
         Raises:
             TypeError: [Invalid input type]
         """
+        print("names: ", names)
+        print("naming_prefix: ", self.naming_prefix)
         if type(names) is str:
             return self.naming_prefix + names if not self.exclude_from_prefixing(names) else names
         elif type(names) is list:
@@ -488,6 +490,7 @@ class MujocoXMLModel(MujocoXML, MujocoModel):
 
         # Parse element tree to get all relevant bodies, joints, actuators, and geom groups
         self._elements = sort_elements(root=self.root)
+        print("elements: ", fname)
         assert len(self._elements["root_body"]) == 1, "Invalid number of root bodies found for robot model. Expected 1," \
                                                       "got {}".format(len(self._elements["root_body"]))
         self._elements["root_body"] = self._elements["root_body"][0]
@@ -496,6 +499,9 @@ class MujocoXMLModel(MujocoXML, MujocoModel):
         self._root_body = self._elements["root_body"].get("name")
         self._bodies = [e.get("name") for e in self._elements.get("bodies", [])]
         self._joints = [e.get("name") for e in self._elements.get("joints", [])]
+        for e in self._elements.get("actuators", []):
+            print(e.get("name"))
+        print("joints: ", self._elements.get("joints", []))
         self._actuators = [e.get("name") for e in self._elements.get("actuators", [])]
         self._sites = [e.get("name") for e in self._elements.get("sites", [])]
         self._sensors = [e.get("name") for e in self._elements.get("sensors", [])]
@@ -551,6 +557,7 @@ class MujocoXMLModel(MujocoXML, MujocoModel):
 
     @property
     def joints(self):
+        print("joints: ", self._joints)
         return self.correct_naming(self._joints)
 
     @property

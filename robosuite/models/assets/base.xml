@@ -3,10 +3,14 @@
   <compiler angle="radian" meshdir="meshes/" inertiagrouprange="0 0"/>
 	<!--Viscosity:: water:0.000894, air:0.00001983 -->
 	<!--Density:: water:1000, air:1.2 -->
-  <option impratio="20" cone="elliptic" viscosity="0.000894" density="1000" >
+  <option 
+    impratio="20" 
+    cone="elliptic" >
+    <!-- viscosity="0.000894"  -->
+    <!-- density="1000"> -->
     <flag gravity="disable" />
   </option>
-  <size nconmax="5000" njmax="5000"/>
+  <size nconmax="5000" njmax="10000" nstack="1000000"/>
 
   <asset>
   </asset>

@@ -85,7 +85,7 @@ if __name__ == "__main__":
         options["robots"] = choose_robots(exclude_bimanual=True)
 
     # Hacky way to grab joint dimension for now
-    joint_dim = 6 if options["robots"] == "UR5e" else 7
+    joint_dim = 6 if (options["robots"] == "UR5e" or options["robots"] == "RexROV2UR3") else 7
 
     # Choose controller
     controller_name = choose_controller()

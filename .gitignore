@@ -112,3 +112,5 @@ mjkey.txt
 .idea
 
 .pytest_cache/
+robosuite/models/vae/logs/recorded_data/
+robosuite/models/vae/logs/

@@ -138,7 +138,7 @@ class Controller(object, metaclass=abc.ABCMeta):
             self.ee_ori_mat = np.array(self.sim.data.site_xmat[self.sim.model.site_name2id(self.eef_name)].reshape([3, 3]))
             self.ee_pos_vel = np.array(self.sim.data.site_xvelp[self.sim.model.site_name2id(self.eef_name)])
             self.ee_ori_vel = np.array(self.sim.data.site_xvelr[self.sim.model.site_name2id(self.eef_name)])
-
+            print("self.qpos_index: ", self.qpos_index)
             self.joint_pos = np.array(self.sim.data.qpos[self.qpos_index])
             self.joint_vel = np.array(self.sim.data.qvel[self.qvel_index])
 

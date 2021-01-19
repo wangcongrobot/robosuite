@@ -125,6 +125,7 @@ class Robot(object):
         Raises:
             ValueError: [Invalid noise type]
         """
+        print("self.init_qpos: ", self.init_qpos)
         init_qpos = np.array(self.init_qpos)
         if not deterministic:
             # Determine noise
@@ -135,9 +136,14 @@ class Robot(object):
             else:
                 raise ValueError("Error: Invalid noise type specified. Options are 'gaussian' or 'uniform'.")
             init_qpos += noise
+            print("init_qpos: ", init_qpos)
 
         # Set initial position in sim
-        self.sim.data.qpos[self._ref_joint_pos_indexes] = init_qpos
+        print("self._ref_joint_pos_indexes: ", self._ref_joint_actuator_indexes)
+        # self.sim.data.qpos[self._ref_joint_pos_indexes] = init_qpos
+        # self.sim.data.qpos[self._ref_joint_pos_indexes] = init_qpos
+        for i in self._ref_joint_actuator_indexes:
+            self.sim.data.qpos[i] = init_qpos[i]
 
         # Load controllers
         self._load_controller()
@@ -156,7 +162,9 @@ class Robot(object):
         Sets up necessary reference for robots, grippers, and objects.
         """
         # indices for joints in qpos, qvel
+        print("robot_joints: ", self.robot_model.joints)
         self.robot_joints = self.robot_model.joints
+        print("robot_joints: ", self.robot_joints)
         self._ref_joint_pos_indexes = [
             self.sim.model.get_joint_qpos_addr(x) for x in self.robot_joints
         ]
